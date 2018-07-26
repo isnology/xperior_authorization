@@ -1,13 +1,10 @@
-import api, { setHeaders } from './init'
+import api, { auth, setHeaders, extractToken } from './init'
 import { rememberToken, getDecodedToken, getValidToken } from './token'
 
-function extractToken(res) {
-  return res.headers.authorization.substring(7)
-}
 
 export function signIn(data) {
   setHeaders(getValidToken())
-  return api.post('/users/sign_in', data)
+  return auth.post('/users/sign_in', data)
   .then((res) => {
     rememberToken(extractToken(res))
     return getDecodedToken()
@@ -22,7 +19,7 @@ export function signIn(data) {
 
 export function signUp(data) {
   setHeaders(getValidToken())
-  return api.post('/users', data)
+  return auth.post('/users', data)
   .then((res) => {
     rememberToken(extractToken(res))
     return getDecodedToken()
@@ -31,7 +28,7 @@ export function signUp(data) {
 
 export function signOut() {
   setHeaders(getValidToken())
-  return api.delete('/users/sign_out')
+  return auth.delete('/users/sign_out')
   .then((res) => {
     rememberToken(null)
     return null
