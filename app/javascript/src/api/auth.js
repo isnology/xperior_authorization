@@ -1,6 +1,12 @@
-import api, { auth, setHeaders, extractToken } from './init'
+import { auth, setHeaders } from './init'
 import { rememberToken, getDecodedToken, getValidToken } from './token'
 
+
+console.log("auth.baseURL:", auth.defaults.baseURL)
+
+function extractToken(res) {
+  return res.headers.authorization.split(' ')[1]
+}
 
 export function signIn(data) {
   setHeaders(getValidToken())

@@ -279,6 +279,6 @@ Devise.setup do |config|
 
   config.jwt do |jwt|
     jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
-    jwt.expiration_time = 604800
+    jwt.expiration_time = 12 * 3600 # 12 hours
   end
 end

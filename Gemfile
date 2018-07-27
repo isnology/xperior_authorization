@@ -22,8 +22,13 @@ gem 'active_model_serializers', '~> 0.9.7'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem 'devise-jwt', '~> 0.5.5'
+gem 'devise-jwt', '~> 0.5.7'
 gem 'rack-cors'
+
+#security updates
+gem 'loofah', '~> 2.2.1'
+gem 'sprockets', '~> 3.7.2'
+gem 'rails-html-sanitizer', '~> 1.0.4'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
